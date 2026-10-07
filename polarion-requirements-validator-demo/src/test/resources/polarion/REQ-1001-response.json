@@ -1,0 +1,30 @@
+{
+  "links": {
+    "self": "https://polarion.example.local/polarion/rest/v1/projects/PF/workitems/REQ-1001?fields%5Bworkitems%5D=id,type,title,status,description,acceptanceCriteria,testIds"
+  },
+  "data": {
+    "type": "workitems",
+    "id": "PF/REQ-1001",
+    "attributes": {
+      "id": "REQ-1001",
+      "type": "systemrequirement",
+      "title": "Portfolio performance can be calculated for a reporting date",
+      "status": "approved",
+      "description": {
+        "type": "text/html",
+        "value": "<p>The system shall calculate portfolio performance for a selected reporting date.</p>"
+      },
+      "acceptanceCriteria": [
+        "Response contains performance in the requested currency",
+        "Calculation completes successfully"
+      ],
+      "testIds": [
+        "TEST-2001"
+      ]
+    },
+    "links": {
+      "self": "https://polarion.example.local/polarion/rest/v1/projects/PF/workitems/REQ-1001",
+      "portal": "https://polarion.example.local/polarion/redirect/project/PF/workitem?id=REQ-1001"
+    }
+  }
+}
