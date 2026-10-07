@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'ch.kbenz.demo'
+version = '0.1.0'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+dependencies {
+    implementation 'org.yaml:snakeyaml:2.3'
+    implementation 'org.apache.velocity:velocity-engine-core:2.4.1'
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+application {
+    mainClass = 'ch.kbenz.polariondemo.Main'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

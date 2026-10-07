@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Requirements Validation Report</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #bbb; padding: .5rem; text-align: left; }
+    code { background: #eee; padding: .1rem .3rem; }
+  </style>
+</head>
+<body>
+<h1>Requirements Validation Report</h1>
+
+<p>Requirements checked: $requirements.size()</p>
+<p>Validation issues: $issues.size()</p>
+
+<h2>Requirements</h2>
+<table>
+  <tr><th>ID</th><th>Title</th><th>Status</th><th>Tests</th></tr>
+#foreach($r in $requirements)
+  <tr>
+    <td>$r.id()</td>
+    <td>$r.title()</td>
+    <td>$r.status()</td>
+    <td>$r.testIds()</td>
+  </tr>
+#end
+</table>
+
+<h2>Issues</h2>
+<table>
+  <tr><th>Requirement</th><th>Severity</th><th>Message</th></tr>
+#foreach($issue in $issues)
+  <tr>
+    <td>$issue.requirementId()</td>
+    <td>$issue.severity()</td>
+    <td>$issue.message()</td>
+  </tr>
+#end
+</table>
+</body>
+</html>

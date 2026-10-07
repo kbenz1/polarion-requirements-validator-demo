@@ -1,0 +1,10 @@
+id: REQ-1001
+title: Portfolio performance can be calculated for a reporting date
+status: APPROVED
+description: >
+  The system shall calculate portfolio performance for a selected reporting date.
+acceptanceCriteria:
+  - Response contains performance in the requested currency
+  - Calculation completes successfully
+testIds:
+  - TEST-2001

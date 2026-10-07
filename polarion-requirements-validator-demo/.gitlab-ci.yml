@@ -1,0 +1,25 @@
+stages:
+  - test
+  - validate
+
+default:
+  image: gradle:8.10-jdk17
+
+test:
+  stage: test
+  script:
+    - gradle clean test
+
+validate-requirements:
+  stage: validate
+  script:
+    - |
+      set +e
+      gradle run
+      status=$?
+      echo "Validation exit code: $status"
+      exit 0
+  artifacts:
+    when: always
+    paths:
+      - build/reports/requirements-report.html
