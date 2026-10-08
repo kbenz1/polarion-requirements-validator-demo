@@ -74,3 +74,47 @@ See `docs/polarion-mapping.md`.
 > I would still need to learn the customer's concrete Polarion customizations and
 > operational environment, but the underlying Java/CI/integration concepts are familiar.
 
+## Realistic Polarion REST mapping simulation
+
+The project now contains a realistic JSON fixture that mirrors Polarion's
+documented JSON:API Work Item response shape.
+
+Run `PolarionRequirementMapperTest` or start `PolarionMappingDemo`.
+
+The flow is:
+
+```text
+simulated Polarion REST response
+        -> PolarionRequirementMapper
+        -> Requirement
+        -> RequirementValidator
+```
+
+See `docs/polarion-rest-mapping.md`.
+
+## Requirements Compliance Matrix
+
+The project now contains a second end-to-end demo:
+
+```text
+simulated Polarion REST Work Items
+        -> PolarionRequirementMapper
+        -> RequirementValidator
+        + test evidence
+        -> ComplianceMatrixBuilder
+        -> Apache Velocity
+        -> compliance-matrix.html
+```
+
+Run `ComplianceMatrixDemo` as a Java Application in Eclipse.
+
+It demonstrates three states:
+
+- `REQ-1001` -> `COMPLIANT`
+- `REQ-1002` -> `NON_COMPLIANT`
+- `REQ-1003` -> `REVIEW`
+
+The compliance rules are deliberately explicit and are **demo rules**, not a
+claim of regulatory compliance.
+
+See `docs/compliance-matrix.md`.

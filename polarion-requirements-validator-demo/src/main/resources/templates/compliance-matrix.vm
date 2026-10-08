@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Requirements Compliance Matrix</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #bbb; padding: .55rem; text-align: left; vertical-align: top; }
+    th { background: #eee; }
+    .COMPLIANT { font-weight: bold; }
+    .NON_COMPLIANT { font-weight: bold; }
+    .REVIEW { font-weight: bold; }
+  </style>
+</head>
+<body>
+<h1>Requirements Compliance Matrix</h1>
+
+<p>
+Demo rule set: an APPROVED requirement is COMPLIANT when it has acceptance
+criteria, at least one linked verification test, no validation errors, and all
+linked test evidence is PASSED.
+</p>
+
+<table>
+  <tr>
+    <th>Requirement</th>
+    <th>Title</th>
+    <th>Status</th>
+    <th>Acceptance Criteria</th>
+    <th>Tests</th>
+    <th>Test Result</th>
+    <th>Validation Errors</th>
+    <th>Compliance</th>
+    <th>Rationale</th>
+  </tr>
+#foreach($entry in $entries)
+  <tr>
+    <td>$entry.requirementId()</td>
+    <td>$entry.title()</td>
+    <td>$entry.requirementStatus()</td>
+    <td>$entry.acceptanceCriteriaCount()</td>
+    <td>$entry.testIds()</td>
+    <td>$entry.testSummary()</td>
+    <td>$entry.validationErrors()</td>
+    <td class="$entry.complianceStatus()">$entry.complianceStatus()</td>
+    <td>$entry.rationale()</td>
+  </tr>
+#end
+</table>
+</body>
+</html>

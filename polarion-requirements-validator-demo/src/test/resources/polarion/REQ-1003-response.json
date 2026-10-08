@@ -1,0 +1,22 @@
+{
+  "data": {
+    "type": "workitems",
+    "id": "PF/REQ-1003",
+    "attributes": {
+      "id": "REQ-1003",
+      "type": "systemrequirement",
+      "title": "Monthly portfolio report can be generated",
+      "status": "review",
+      "description": {
+        "type": "text/html",
+        "value": "<p>The system shall generate a monthly portfolio report.</p>"
+      },
+      "acceptanceCriteria": [
+        "Report can be generated as PDF"
+      ],
+      "testIds": [
+        "TEST-2003"
+      ]
+    }
+  }
+}

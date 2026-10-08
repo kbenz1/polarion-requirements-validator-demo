@@ -1,0 +1,20 @@
+{
+  "data": {
+    "type": "workitems",
+    "id": "PF/REQ-1002",
+    "attributes": {
+      "id": "REQ-1002",
+      "type": "systemrequirement",
+      "title": "Portfolio currency conversion is auditable",
+      "status": "approved",
+      "description": {
+        "type": "text/html",
+        "value": "<p>The system shall retain evidence for currency conversion.</p>"
+      },
+      "acceptanceCriteria": [
+        "Conversion source and rate are traceable"
+      ],
+      "testIds": []
+    }
+  }
+}
