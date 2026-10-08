@@ -1,25 +1,24 @@
 # Polarion Requirements Validator Demo
 
-Small hands-on reference project created after an interview to explore how a custom
-requirements validation tool around Polarion could be structured.
+Kleines Hands-On Referenz-Projekt als Lab für ein Custom
+Requirements Validierungstool, das auf Polarion ALM aufsetzt.
 
-**Important:** This is not claimed to be a production Polarion plug-in and it has not
-been tested against the interviewer's Polarion installation. It demonstrates the
-engineering concepts around requirement validation, Java-based extensions,
-Apache Velocity reporting, CI integration and a REST adapter boundary.
 
-## What it demonstrates
 
-- Requirements represented as structured YAML
-- Java validation rules
-- JUnit tests
-- Apache Velocity report generation
-- A clean adapter boundary for Polarion REST API integration
-- GitHub Actions CI
-- Equivalent GitLab CI example
-- A small Groovy validation script as an example of script-based customization
+**Wichtig:** Das ist kein production-ready Polarion plugin. Es zeigt nur die Engineering-Konzepte für mögliche Eclipse Plugins z. B. bzgl. Traceability, Work Items und den Requirements Workflow.
 
-## Example requirement
+## Was zeigt diese Demo
+
+* Requirements als strukturierte YAML\_Dateien
+* Java Validierungsregeln
+* JUnit tests
+* Apache Velocity Report Generierung
+* Einen Adapter für Polarion REST API Integration
+* GitHub Actions CI
+* Ein äquivalentes GitLab CI Beispiel
+* Ein kleines Groovy Validation Script als Beispiel für script-basierte Customizations
+
+## Beispiel für ein Requirement
 
 ```yaml
 id: REQ-1001
@@ -34,15 +33,15 @@ testIds:
   - TEST-2001
 ```
 
-## Local run
+## Anleitung für Lokalen Run
 
-Requires Java 17+ and Gradle 8+.
+Benötigt Java 17+ und Gradle 8+.
 
 ```bash
 gradle clean test run
 ```
 
-The application validates all YAML files in `requirements/` and generates:
+Die Application validiert alle YAML-Files in `requirements/` und generiert:
 
 ```text
 build/reports/requirements-report.html
@@ -51,37 +50,24 @@ build/reports/requirements-report.html
 ## How this maps to a Polarion environment
 
 A real implementation could replace the filesystem loader with the `PolarionClient`
-adapter and retrieve Work Items through Polarion REST API. The same validation engine
-could then be used in:
+adapter and retrieve Work Items through Polarion REST API. Dieselbe Validation Engine könnte genutzt werden:
 
-1. a CI pipeline;
-2. a service called by Polarion;
-3. a Java/Eclipse-based extension;
-4. a migration or quality-gate tool.
+1. in einer CI Pipeline;
+2. einem Service, der von Polarion aufgerufen wird;
+3. einer Java/Eclipse-Extension;
+4. einem Migration- oder Quality-Gate-Tool.
 
-The demo deliberately separates the *validation logic* from the *Polarion integration*
-so that the engineering concept can be tested independently.
+Die Demo trennt *Validation Logik* vom *Polarion Integration Layer*, so dass die verschiedenen Engineering\_Konzepte unabhängig getestet werden können.
 
-See `docs/polarion-mapping.md`.
+Weiteres unter `docs/polarion-mapping.md`.
 
-## Interview story
+## Realistische Polarion REST mapping Simulation
 
-> In the first interview I learned that the existing Polarion landscape is more than
-> configuration and scripting: it contains Java-based tooling, Velocity and custom
-> validation logic. I therefore built this small lab to understand the engineering
-> pattern hands-on. It validates structured requirements, produces a Velocity-based
-> report, is tested in CI, and contains an adapter boundary for Polarion REST.
-> I would still need to learn the customer's concrete Polarion customizations and
-> operational environment, but the underlying Java/CI/integration concepts are familiar.
+Das Eclipse-Projekt enthält eine JSON Fixture, die Polarions JSON:API Work Item Antwort simuliert.
 
-## Realistic Polarion REST mapping simulation
+Starte `PolarionRequirementMapperTest` oder `PolarionMappingDemo`.
 
-The project now contains a realistic JSON fixture that mirrors Polarion's
-documented JSON:API Work Item response shape.
-
-Run `PolarionRequirementMapperTest` or start `PolarionMappingDemo`.
-
-The flow is:
+Der Flow lautet:
 
 ```text
 simulated Polarion REST response
@@ -90,14 +76,14 @@ simulated Polarion REST response
         -> RequirementValidator
 ```
 
-See `docs/polarion-rest-mapping.md`.
+Weiteres unter `docs/polarion-rest-mapping.md`.
 
 ## Requirements Compliance Matrix
 
-The project now contains a second end-to-end demo:
+Das Projekt enthält eine Demo für eine Compliance Matrix:
 
 ```text
-simulated Polarion REST Work Items
+Simulierte Polarion REST Work Items
         -> PolarionRequirementMapper
         -> RequirementValidator
         + test evidence
@@ -106,20 +92,25 @@ simulated Polarion REST Work Items
         -> compliance-matrix.html
 ```
 
-Run `ComplianceMatrixDemo` as a Java Application in Eclipse.
+Starte `ComplianceMatrixDemo` als Java Application in Eclipse.
 
-It demonstrates three states:
+Es zeigt drei Stati:
 
-- `REQ-1001` -> `COMPLIANT`
-- `REQ-1002` -> `NON_COMPLIANT`
-- `REQ-1003` -> `REVIEW`
+* `REQ-1001` -> `COMPLIANT`
+* `REQ-1002` -> `NON\_COMPLIANT`
+* `REQ-1003` -> `REVIEW`
 
-The compliance rules are deliberately explicit and are **demo rules**, not a
-claim of regulatory compliance.
+Die Compliance-Regeln sind **Demo Regeln**, und keine echten Compliance-Regeln,
 
-See `docs/compliance-matrix.md`.
+aber sie verdeutlichen das Prinzip.
+
+Weiteres unter `docs/compliance-matrix.md`.
+
 
 
 ## Work Item Workflow Demo
 
-Run `WorkItemWorkflowDemo` to demonstrate linked Work Items, role-based transitions, guard rules and a Velocity workflow report. See `docs/work-item-workflow.md`.
+Starte `WorkItemWorkflowDemo` um verlinkte Work Items, Role-Based Transitions, Guard Rules und einen Velocity workflow Report zu sehen.
+
+Weiteres unter `docs/work-item-workflow.md`.
+
