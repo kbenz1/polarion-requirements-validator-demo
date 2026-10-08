@@ -118,3 +118,8 @@ The compliance rules are deliberately explicit and are **demo rules**, not a
 claim of regulatory compliance.
 
 See `docs/compliance-matrix.md`.
+
+
+## Work Item Workflow Demo
+
+Run `WorkItemWorkflowDemo` to demonstrate linked Work Items, role-based transitions, guard rules and a Velocity workflow report. See `docs/work-item-workflow.md`.

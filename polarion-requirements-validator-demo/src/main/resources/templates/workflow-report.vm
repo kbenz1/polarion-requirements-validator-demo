@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Work Item Workflow</title>
+<style>body{font-family:Arial;margin:2rem}table{border-collapse:collapse;width:100%;margin-bottom:2rem}
+th,td{border:1px solid #bbb;padding:.55rem;text-align:left;vertical-align:top}th{background:#eee}
+.flow{padding:1rem;background:#f6f6f6;font-family:monospace;margin-bottom:2rem}</style></head><body>
+<h1>Polarion-style Work Item Workflow Demo</h1>
+<div class="flow">DRAFT -> IN_REVIEW -> APPROVED -> IMPLEMENTED -> VERIFIED -> CLOSED</div>
+<h2>Work Items</h2><table><tr><th>ID</th><th>Type</th><th>Title</th><th>Status</th><th>Links</th></tr>
+#foreach($item in $workItems)<tr><td>$item.id()</td><td>$item.type()</td><td>$item.title()</td><td>$item.status()</td>
+<td><ul>#foreach($link in $item.links())<li>$link.type() -> $link.targetId()</li>#end</ul></td></tr>#end</table>
+<h2>Allowed Transitions</h2><table><tr><th>From</th><th>To</th><th>Roles</th><th>Description</th></tr>
+#foreach($t in $transitions)<tr><td>$t.from()</td><td>$t.to()</td><td>$t.allowedRoles()</td><td>$t.description()</td></tr>#end</table>
+<h2>Workflow History</h2><table><tr><th>Work Item</th><th>From</th><th>To</th><th>Role</th><th>Actor</th><th>Timestamp</th><th>Note</th></tr>
+#foreach($e in $history)<tr><td>$e.workItemId()</td><td>$e.from()</td><td>$e.to()</td><td>$e.role()</td><td>$e.actor()</td><td>$e.timestamp()</td><td>$e.note()</td></tr>#end
+</table></body></html>
